@@ -1,0 +1,29 @@
+body, html {
+  height: 100%;
+}
+
+.passed {
+  background-color: #7CFC00;
+}
+
+.failed {
+  background-color: red;
+}
+
+div.testresult {
+  background-color: #EEE;
+  border-bottom: 1px solid #aaa;
+  border-collapse: collapse;
+  margin-bottom: 50px;
+  outline-style: outset;
+  padding-bottom: 10px
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 15px;
+}
