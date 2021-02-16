@@ -1,7 +1,7 @@
 @echo off
 
 if /i "%~1" == "NOT" (
-	set not=NOT
+	set not=%~1
 	shift
 ) else (
 	set not=
@@ -16,14 +16,21 @@ if "%~3" == "" (
 	set third="%~3"
 )
 
+set first="%~1"
+
 if /i "%~1" == "EXIST" (
-	set first=EXIST
+	set first=%~1
 	set message=%~3
 	set third=
-) else (
-	set first="%~1"
 )
 
+if /i "%~1" == "ERRORLEVEL" (
+	set first=%~1
+	set message=%~3
+	set third=
+)
+
+echo %not% %first% %~2 %third%
 if %not% %first% %~2 %third% (
 	set errorlevel=0
 )else (
