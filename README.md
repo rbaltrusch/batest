@@ -63,7 +63,7 @@ Any contributions, such as additional features, bugfixes, or documentation are m
 
 ## License
 
-This repository is open-source software available under the [MIT license](https://github.com/rbaltrusch/batest/blob/master/LICENSE)
+This repository is open-source software available under the [MIT license](https://github.com/rbaltrusch/batest/blob/master/LICENSE).
 
 ## Contact
 
