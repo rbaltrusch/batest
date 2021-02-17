@@ -85,6 +85,7 @@ if "%~1" == "help" (
 ::path input argument
 if "%~1" == "path" (
 	echo Batest path: %~dp0
+	exit /b 0
 )
 
 ::testing scripts
