@@ -11,7 +11,7 @@ After a timely review of a pull request by the maintainers of this repository, t
 
 ## Scope of the repository
 
-Batest is a lightweight testing framework for batchfiles and should remaing lightweight where possible. Functionality that can already be achieved using batest should not be reimplemented in a different form, unless the new functionality is significantly more convenient to use.
+Batest is a lightweight testing framework for batchfiles and should remain lightweight where possible. Functionality that can already be achieved using batest should not be reimplemented in a different form, unless the new functionality is significantly more convenient to use.
 
 As Batch is an old language with little active development beyond maintenance of existing scripts, it makes little sense to turn batest into a more complex testing framework on par with more modern languages, such as Python or Java.
 
