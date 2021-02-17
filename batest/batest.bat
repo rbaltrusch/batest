@@ -12,7 +12,7 @@ setlocal enabledelayedexpansion
 		dir /b *_test.bat >../%tempfile%
 		cd ..
 
-		if exist tests/setup.bat call tests/setup.bat
+		if "%~4" NEQ "list" (if exist tests/setup.bat call tests/setup.bat)
 			
 
 		for /f "delims=," %%f in (%tempfile%) do (
@@ -39,7 +39,7 @@ setlocal enabledelayedexpansion
 		)
 		del %tempfile%
 		
-		if exist tests/teardown.bat call tests/teardown.bat
+		if "%~4" NEQ "list" (if exist tests/teardown.bat call tests/teardown.bat)
 	)
 	cd "%~2"
 endlocal
