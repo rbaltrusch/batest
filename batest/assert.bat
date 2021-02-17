@@ -30,7 +30,6 @@ if /i "%~1" == "ERRORLEVEL" (
 	set third=
 )
 
-echo %not% %first% %~2 %third%
 if %not% %first% %~2 %third% (
 	set errorlevel=0
 )else (
