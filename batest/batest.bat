@@ -50,8 +50,6 @@ set "path=%path%;%~dp0"
 set "original_path=%cd%"
 set testreport=test_report.html
 
-echo "%~1"
-
 if exist "%~1" (
 	set "test_path=%~1"
 )else (
@@ -81,6 +79,7 @@ if "%~1" == "help" (
 	echo directory to each test file before running it, the test file must be present
 	echo in the same directory as the tested files.
 	echo.
+	exit /b 0
 )
 
 ::path input argument
