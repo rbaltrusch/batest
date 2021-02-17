@@ -1,6 +1,6 @@
 # Batest
 
-Batest is a lightweight batchfile unit testing framework, shipping with an *assert* statement to make testing batchfiles easy.
+Batest is a lightweight batchfile unit testing framework, shipping with an *assert* statement to make testing batchfiles easy. It generates a simple HTML test report containing the results after every run.
 
 ## Getting started
 
@@ -68,4 +68,3 @@ This repository is open-source software available under the [MIT license](https:
 ## Contact
 
 Please raise an issue for code changes. To reach out, please send an email to richard@baltrusch.net.
-
