@@ -59,11 +59,11 @@ For more information on the use of batest, assert, and the folder structure, ple
 
 ## Contributions
 
-Any contributions, such as additional features, bugfixes, or documentation are much appreciated. Contribution guidelines are specified in [CONTRIBUTING.md](https://github.com/rbaltrusch/batch/blob/master/CONTRIBUTING.md).
+Any contributions, such as additional features, bugfixes, or documentation are much appreciated. Contribution guidelines are specified in [CONTRIBUTING.md](https://github.com/rbaltrusch/batest/blob/master/CONTRIBUTING.md).
 
 ## License
 
-This repository is open-source software available under the [MIT license](https://github.com/rbaltrusch/batch/blob/master/LICENSE)
+This repository is open-source software available under the [MIT license](https://github.com/rbaltrusch/batest/blob/master/LICENSE)
 
 ## Contact
 
