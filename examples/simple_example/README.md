@@ -29,4 +29,4 @@ Batest does not change your Windows PATH variable. It merely switches to all fol
 
 ## More information
 
-More information is available in the [other examples](https://github.com/rbaltrusch/batest/examples) and the [wiki](https://github.com/rbaltrusch/batest/wiki).
+More information is available in the [other examples](https://github.com/rbaltrusch/batest/tree/master/examples) and the [wiki](https://github.com/rbaltrusch/batest/wiki).

@@ -20,6 +20,6 @@ If batest is being run from within its own folder, we can specify the following 
 
 ## More information
 
-For a basic example, please have a look at the [simple example](https://github.com/rbaltrusch/batest/examples/simple_example) first.
+For a basic example, please have a look at the [simple example](https://github.com/rbaltrusch/batest/tree/master/examples/simple_example) first.
 
-More information is available in the [other examples](https://github.com/rbaltrusch/batest/examples) and the [wiki](https://github.com/rbaltrusch/batest/wiki).
+More information is available in the [other examples](https://github.com/rbaltrusch/batest/tree/master/examples) and the [wiki](https://github.com/rbaltrusch/batest/wiki).

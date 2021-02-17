@@ -55,7 +55,7 @@ batest list "path/to/folder"
 
 ### More information
 
-For more information on the use of batest, assert, and the folder structure, please have a look at the [examples](https://github.com/rbaltrusch/batest/examples) and the [wiki](https://github.com/rbaltrusch/batest/wiki).
+For more information on the use of batest, assert, and the folder structure, please have a look at the [examples](https://github.com/rbaltrusch/batest/tree/master/examples) and the [wiki](https://github.com/rbaltrusch/batest/wiki).
 
 ## Contributions
 
