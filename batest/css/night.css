@@ -1,4 +1,6 @@
 body, html {
+  background-color: #121212;
+  color: #FFFFFF;
   height: 100%;
 }
 
@@ -7,19 +9,19 @@ h2, p {
 }
 
 .passed {
-  background-color: #7CFC00;
+  background-color: #90EE02;
 }
 
 .failed {
-  background-color: red;
+  background-color: #CF6679;
 }
 
 .passedtext {
-  color: #7CFC00;
+  color: #90EE02;
 }
 
 .failedtext {
-  color: red;
+  color: #CF6679;
 }
 
 .results {
@@ -40,10 +42,15 @@ table {
 }
 
 table, th, td {
+  background-color: #242424;
   border: 1px solid black;
   border-collapse: collapse;
 }
 
 th, td {
   padding: 15px;
+}
+
+th {
+  background-color: #363636;
 }
