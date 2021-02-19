@@ -1,4 +1,5 @@
 @echo off
+setlocal
 
 goto :main
 
@@ -47,7 +48,6 @@ exit /b
 
 :main
 set "path=%path%;%~dp0"
-set "original_path=%cd%"
 set testreport=test_report.html
 
 if exist "%~1" (
