@@ -1,6 +1,8 @@
 # Batest
 
-Batest is a lightweight batchfile unit testing framework, shipping with an *assert* statement to make testing batchfiles easy. It generates a simple HTML test report containing the results after every run.
+Batest is a lightweight batchfile unit testing framework, shipping with an [assert](https://github.com/rbaltrusch/batest/tree/master/README.md/#assertions) statement to make testing batchfiles easy. It generates a simple HTML test report containing the results after every run.
+
+![Screenshots of the test reports](https://github.com/rbaltrusch/batest/blob/master/batest/media/screenshot.png?raw=true)
 
 ## Getting started
 
@@ -12,7 +14,7 @@ To call batest from anywhere in the command line, add it to the Windows PATH. Al
 
 ## How to use
 
-Batest ships with an *assert.bat* script (located in the same folder as *batest.bat*), which should be used in the test files you define. Information on the functionality provided with the *assert* statement can be found [here](https://github.com/rbaltrusch/batest/wiki/assert).
+Batest ships with an [assert](https://github.com/rbaltrusch/batest/tree/master/README.md/#assertions) statement (located in the same folder as *batest.bat*), which should be used in the test files you define. Information on the functionality provided with the *assert* statement can be found [here](https://github.com/rbaltrusch/batest/wiki/assert).
 
 To test the current folder with batest, simply run one of the following from the command line:
 ```batch
@@ -52,6 +54,36 @@ To list all test files recognized by batest under a path without actually runnin
 ```batch
 batest list "path/to/folder"
 ```
+
+### Assertions
+
+The *assert.bat* script shipping with batest supports much of the functionality of the Batch IF statement.
+
+The general syntax for the assert call is:
+
+```batch
+call assert operand1 operator operand2 errormessage
+```
+
+Some examples of various assert statements and whether they are expected to fail or to pass:
+
+```batch
+:: should pass, 1 equals 1
+call assert 1 EQU 1 "my message"
+
+::should pass if file.txt exists
+call assert exist file.txt "file is missing"
+
+::should pass 1 is not greater than 2
+call assert NOT 1 GEQ 2 "error message"
+```
+
+Passing assert statements set ERRORLEVEL to 0, failing ones to 1.
+
+More help is available in the [wiki](https://github.com/rbaltrusch/batest/wiki/assert) or directly in the command line:
+
+	assert help
+
 
 ### More information
 
