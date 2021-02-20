@@ -2,7 +2,7 @@
 
 Batest is a lightweight batchfile unit testing framework, shipping with an [assert](https://github.com/rbaltrusch/batest/tree/master/README.md/#assertions) statement to make testing batchfiles easy. It generates a simple HTML test report containing the results after every run.
 
-![Screenshots of the test reports](https://github.com/rbaltrusch/batest/blob/master/batest/media/screenshot.png?raw=true)
+![Screenshots of the test reports](https://github.com/rbaltrusch/batest/tree/master/batest/media/screenshot.png?raw=true)
 
 ## Getting started
 
