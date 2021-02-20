@@ -27,10 +27,10 @@ setlocal enabledelayedexpansion
 				set errorlevel=0
 				call tests/%%f >%outputfile%
 				if "!errorlevel!" == "0" (
-					set status=passed
+					set status=Passed
 					set /a numberpassed+=1
 				)else (
-					set status=failed
+					set status=Failed
 					set /a numberfailed+=1
 				)
 				echo ^<tr class=testresult^> ^<td^>%%f^</td^> ^<td class=!status!^>!status!^</td^> >>"%~2/%~3"

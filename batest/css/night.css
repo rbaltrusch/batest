@@ -8,16 +8,16 @@ h2, p {
   text-align: center;
 }
 
-.passed {
-  background-color: #90EE02;
+.Passed {
+  background-color: #75E900;
 }
 
-.failed {
+.Failed {
   background-color: #CF6679;
 }
 
 .passedtext {
-  color: #90EE02;
+  color: #75E900;
 }
 
 .failedtext {

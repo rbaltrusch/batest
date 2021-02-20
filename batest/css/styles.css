@@ -6,11 +6,11 @@ h2, p {
   text-align: center;
 }
 
-.passed {
+.Passed {
   background-color: #7CFC00;
 }
 
-.failed {
+.Failed {
   background-color: red;
 }
 
