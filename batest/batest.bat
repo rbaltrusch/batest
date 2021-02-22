@@ -40,7 +40,7 @@ setlocal enabledelayedexpansion
 				)
 				del %outputfile%
 				echo ^</td^> >>"%~2/%~3"
-				echo ^<td^>%new_path%^</td^> >>"%~2/%~3"
+				echo ^<td^>%~dpf1^</td^> >>"%~2/%~3"
 				echo ^</tr^> >>"%~2/%~3"
 			)
 		)
