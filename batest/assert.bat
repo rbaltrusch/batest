@@ -61,6 +61,12 @@ if /i "%~1" == "ERRORLEVEL" (
 	set third=
 )
 
+if /i "%~1" == "DEFINED" (
+	set first=%~1
+	set message=%~3
+	set third=
+)
+
 if %not% %first% %~2 %third% (
 	set errorlevel=0
 )else (
