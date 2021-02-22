@@ -17,6 +17,8 @@ if /i "%~1" == "help" (
 	echo     GTR
 	echo     NOT
 	echo     EXIST
+	echo     DEFINED
+	echo     ERRORLEVEL
 	echo.
 	echo For more help regarding the operators, see HELP IF.
 	echo.
