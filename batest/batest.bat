@@ -94,9 +94,7 @@ if "%~1" == "help" (
 	echo path               outputs the directory in which the batest file resides
 	echo.
 	echo.
-	echo Note that Batest does not change the PATH environment variable. As it changes
-	echo directory to each test file before running it, the test file must be present
-	echo in the same directory as the tested files.
+	echo Note that Batest does not add the test directories to the PATH environment variable. As it changes directory to each test file before running it, the test file must be present in a tests subdirectory.
 	echo.
 	exit /b 0
 )
