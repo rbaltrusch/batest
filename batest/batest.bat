@@ -109,10 +109,12 @@ if "%~1" == "help" (
 	echo Batest runs all bat files ending with "_test" in the specified dir.
 	echo.
 	echo normal usage: batest ^<test_path^>
+	echo    dark mode: batest --night [-n] ^<test_path^>
 	echo.
-	echo help               outputs help on all batest options
-	echo list ^<test_path^>   outputs all test files recognized by batest in the test_path
-	echo path               outputs the directory in which the batest file resides
+	echo help                     outputs help on all batest options
+	echo path                     outputs the directory in which the batest file resides
+	echo --list [-l] ^<test_path^>  list all test files recognized under test_path
+	echo.
 	echo.
 	echo.
 	echo Note that Batest does not add the test directories to the PATH environment variable. As it changes directory to each test file before running it, the test file must be present in a tests subdirectory.
