@@ -1,24 +1,34 @@
 @echo off
+::setlocal required to keep changes to current directory in the local scope
 setlocal
 
 goto :main
 
+This is the main batest script. To receive more information, run batest help or visit:
+https://github.com/rbaltrusch/batest
+
 :run_tests <-- %~1: new_path %~2: original_path %~3: testreportfilename %~4: inputarg 1 from batest
 setlocal enabledelayedexpansion
+	::variables setup
 	set tempfile=__testfiles__.txt
 	set outputfile=__testoutput__.txt
 	set "new_path=%~1"
 	set /a numberfailed=0
 	set /a numberpassed=0
+
 	cd "%~1"
 	if exist tests (
+
+		::get contents of tests folder
 		cd tests
 		dir /b *_test.bat >../%tempfile%
 		cd ..
 
+		::setup.bat
 		if "%~4" NEQ "list" (if exist tests/setup.bat call tests/setup.bat)
 			
 
+		::loop through test files and run them normally, or echo path for "batest list"
 		for /f "delims=," %%f in (%tempfile%) do (
 			if "%~4" == "list" (
 				::echo out full filepath
@@ -33,12 +43,18 @@ setlocal enabledelayedexpansion
 					set status=Failed
 					set /a numberfailed+=1
 				)
+
+				::html table rows
 				echo ^<tr class=testresult^> ^<td^>%%f^</td^> ^<td class=!status!^>!status!^</td^> >>"%~2/%~3"
 				echo ^<td class=output^> >>"%~2/%~3"
+
+				::extract console log from function call
 				for /f "delims=" %%c in (%outputfile%) do (
 					echo %%c >>"%~2/%~3"
 				)
 				del %outputfile%
+
+				::html filepath col 
 				echo ^</td^> >>"%~2/%~3"
 				echo ^<td^>%~dpf1^</td^> >>"%~2/%~3"
 				echo ^</tr^> >>"%~2/%~3"
@@ -46,6 +62,7 @@ setlocal enabledelayedexpansion
 		)
 		del %tempfile%
 		
+		::teardown.bat
 		if "%~4" NEQ "list" (if exist tests/teardown.bat call tests/teardown.bat)
 	)
 	cd "%~2"
@@ -53,21 +70,27 @@ endlocal & set /a numberpassed=%numberpassed% & set /a numberfailed=%numberfaile
 exit /b
 
 :main
-set "path=%path%;%~dp0"
+rem variables setup
 set testreport=test_report.html
 set css=styles.css
 set batestpath=%~dp0
 
+::add batest to path (not permannently)
+set "path=%path%;%~dp0"
+
+::night mode
 if "%~1" == "-n" (
 	set css=night.css
 	shift
 )
 
+::night mode
 if "%~1" == "--night" (
 	set css=night.css
 	shift
 )
 
+::specified test path
 if exist "%~1" (
 	set "test_path=%~1"
 )else (
@@ -76,6 +99,7 @@ if exist "%~1" (
 cd %test_path%
 set "test_path=%cd%"
 
+::test report header
 echo ^<!DOCTYPE html^> >"%test_path%/%testreport%"
 echo ^<head^> ^<meta charset="utf-8"^> ^<link rel="stylesheet" href="%batestpath%/css/%css%"^> ^</head^> >>"%test_path%/%testreport%"
 echo ^<h2^>Batest report for %test_path%^</h2^> >>"%test_path%/%testreport%"
@@ -116,15 +140,19 @@ set /a nfail+=%numberfailed%
 
 setlocal enabledelayedexpansion
 for /f "delims=," %%c in ('dir /b /s "%test_path%"') do (
+	::check if it is a folder
 	if exist %%~sc\nul (
+		::test scripts
 		call :run_tests "%%c" "%test_path%" "%testreport%temp" "%~1"
 		set /a npass+=!numberpassed!
 		set /a nfail+=!numberfailed!
 	)
 )
 
+::Passed and Failed sum titles
 echo ^<div class=results^>^<p^>^<span class=passedtext^>Passed: %npass%^</span^> ^<span class=failedtext^>Failed: %nfail% ^</span^>^</p^>^</div^> >>"%test_path%/%testreport%"
 
+::extract test result table out of temp report
 if exist "%test_path%/%testreport%temp" (
 	for /f "tokens=* delims=; usebackq" %%c in ("%test_path%/%testreport%temp") do (
 		echo %%c>>"%test_path%/%testreport%"
@@ -132,5 +160,6 @@ if exist "%test_path%/%testreport%temp" (
 	del %testreport%temp
 )
 
+::test report footer
 echo ^</table^> >>"%test_path%/%testreport%"
 exit /b 0
