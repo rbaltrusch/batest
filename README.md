@@ -50,9 +50,9 @@ The *tests* folder must contain all test files that test the scripts under test.
 All test files must end with the suffix *_test* to be recognized and run by batest.
 For example, *some_test.bat* would be recognized and run by batest, but *test_something.bat* would not be.
 
-To list all test files recognized by batest under a path without actually running them, use the *batest list* option, as in the example below:
+To list all test files recognized by batest under a path without actually running them, use the *--list [-l]* option, as in the example below:
 ```batch
-batest list "path/to/folder"
+batest --list "path/to/folder"
 ```
 
 ### Assertions
