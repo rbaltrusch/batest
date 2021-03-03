@@ -74,6 +74,7 @@ rem variables setup
 set testreport=test_report.html
 set css=styles.css
 set batestpath=%~dp0
+set list=
 
 ::add batest to path (not permannently)
 set "path=%path%;%~dp0"
@@ -90,21 +91,17 @@ if "%~1" == "--night" (
 	shift
 )
 
-::specified test path
-if exist "%~1" (
-	set "test_path=%~1"
-)else (
-	set "test_path=%cd%"
+::list dir
+if "%~1" == "--list" (
+	set list=list
+	shift
 )
-cd %test_path%
-set "test_path=%cd%"
 
-::test report header
-echo ^<!DOCTYPE html^> >"%test_path%/%testreport%"
-echo ^<head^> ^<meta charset="utf-8"^> ^<link rel="stylesheet" href="%batestpath%/css/%css%"^> ^</head^> >>"%test_path%/%testreport%"
-echo ^<h2^>Batest report for %test_path%^</h2^> >>"%test_path%/%testreport%"
-echo ^<p^>^<i^>%date% %time% %computername%:%username%^</i^>^</p^> >>"%test_path%/%testreport%temp"
-echo ^<table^> ^<tr^> ^<th^>Testfile^</th^> ^<th^>Status^</th^> ^<th^>Output^</th^> ^<th^>Path^</th^> ^</tr^> >>"%test_path%/%testreport%temp"
+::list dir
+if "%~1" == "--l" (
+	set list=list
+	shift
+)
 
 ::help input argument
 if "%~1" == "help" (
@@ -128,6 +125,23 @@ if "%~1" == "path" (
 	echo Batest path: %~dp0
 	exit /b 0
 )
+
+::specified test path
+if exist "%~1" (
+	set "test_path=%~1"
+)else (
+	echo The specified test path "%~1" does not exist!
+	exit /b 1
+)
+cd %test_path%
+set "test_path=%cd%"
+
+::test report header
+echo ^<!DOCTYPE html^> >"%test_path%/%testreport%"
+echo ^<head^> ^<meta charset="utf-8"^> ^<link rel="stylesheet" href="%batestpath%/css/%css%"^> ^</head^> >>"%test_path%/%testreport%"
+echo ^<h2^>Batest report for %test_path%^</h2^> >>"%test_path%/%testreport%"
+echo ^<p^>^<i^>%date% %time% %computername%:%username%^</i^>^</p^> >>"%test_path%/%testreport%temp"
+echo ^<table^> ^<tr^> ^<th^>Testfile^</th^> ^<th^>Status^</th^> ^<th^>Output^</th^> ^<th^>Path^</th^> ^</tr^> >>"%test_path%/%testreport%temp"
 
 set /a npass=0
 set /a nfail=0
