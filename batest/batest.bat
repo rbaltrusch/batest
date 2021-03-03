@@ -98,7 +98,7 @@ if "%~1" == "--list" (
 )
 
 ::list dir
-if "%~1" == "--l" (
+if "%~1" == "-l" (
 	set list=list
 	shift
 )
@@ -147,7 +147,7 @@ set /a npass=0
 set /a nfail=0
 
 ::testing scripts
-call :run_tests "." "%test_path%" "%testreport%temp" "%~1"
+call :run_tests "." "%test_path%" "%testreport%temp" "%list%"
 
 set /a npass+=%numberpassed%
 set /a nfail+=%numberfailed%
@@ -157,7 +157,7 @@ for /f "delims=," %%c in ('dir /b /s "%test_path%"') do (
 	::check if it is a folder
 	if exist %%~sc\nul (
 		::test scripts
-		call :run_tests "%%c" "%test_path%" "%testreport%temp" "%~1"
+		call :run_tests "%%c" "%test_path%" "%testreport%temp" "%list%"
 		set /a npass+=!numberpassed!
 		set /a nfail+=!numberfailed!
 	)
