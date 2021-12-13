@@ -12,4 +12,4 @@ jobs:
       - name: Run tests
         working-directory: batest
         run: |
-          batest .
+          batest.bat .
