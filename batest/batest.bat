@@ -178,4 +178,7 @@ if exist "%test_path%/%testreport%temp" (
 
 ::test report footer
 echo ^</table^> >>"%test_path%/%testreport%"
+
+endlocal
+echo %nfail%
 exit /b 0
