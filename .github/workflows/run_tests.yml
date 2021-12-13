@@ -13,4 +13,4 @@ jobs:
         working-directory: batest
         shell: cmd
         run: |
-          batest.bat .
+          batest . > __temp__
