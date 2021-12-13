@@ -1,0 +1,18 @@
+name: Run Tests
+
+# Controls when the workflow will run
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        working-directory: batest
+        shell: cmd
+        run: |
+          batest . > __temp__
+          for /f %f in ( __temp__ ) do set errorlevel=%f
+          echo %errorlevel%
