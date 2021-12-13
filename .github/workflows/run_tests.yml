@@ -12,6 +12,4 @@ jobs:
       - name: Run tests
         working-directory: batest
         run: |
-          batest . >__temp__
-          for /f %f in ( __temp__ ) do set errorlevel=%f
-          del __temp__
+          batest .
