@@ -10,9 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run tests
-        working-directory: batest
+        working-directory: tests
         shell: cmd
-        run: |
-          batest . > __temp__
-          for /f %f in ( __temp__ ) do set errorlevel=%f
-          echo %errorlevel%
+        run: run_tests
