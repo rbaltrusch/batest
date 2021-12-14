@@ -35,7 +35,7 @@ setlocal enabledelayedexpansion
 				echo %%~dpnxf
 			)else (
 				set errorlevel=0
-				call tests/%%f >%outputfile%
+				call "tests/%%f" >%outputfile%
 				if "!errorlevel!" == "0" (
 					set status=Passed
 					set /a numberpassed+=1
