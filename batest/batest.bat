@@ -180,5 +180,5 @@ if exist "%test_path%/%testreport%temp" (
 echo ^</table^> >>"%test_path%/%testreport%"
 
 endlocal
-echo %nfail%
+if "%list%" NEQ "list" ( echo %nfail% )
 exit /b 0
