@@ -1,4 +1,6 @@
 [![Run Tests](https://github.com/rbaltrusch/batest/actions/workflows/run_tests.yml/badge.svg)](https://github.com/rbaltrusch/batest/actions/workflows/run_tests.yml)
+![version](https://img.shields.io/badge/version-1.0.0-blue)
+[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
 # Batest
 
