@@ -24,6 +24,10 @@ The main features provided by batest are:
 
 Bugfixes to the documentation or functionality provided by batest should contain a clear description of the bug (when and why it occurs) and contain working code that addresses the described problem. If the bug was described in an [issue](https://github.com/rbaltrusch/batest/issues), please link the bugfix pull request to the corresponding issue in the title or description of the pull request.
 
+## Pull requests
+
+Before submitting a pull request, please review the [pull request guidelines](.github/pull_request_template.md).
+
 ## New content
 
 New content, such as new features or more documentation, is also very much appreciated and welcome to this repository, as long as it stays within the [scope of the repository](https://github.com/rbaltrusch/batest/blob/master/CONTRIBUTING.md/#scope-of-the-repository). A clear description of the new content must be provided with the pull request, including information on what the new content includes and why it is a fitting addition to the repository.
