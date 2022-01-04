@@ -34,6 +34,7 @@ setlocal enabledelayedexpansion
 				::echo out full filepath
 				echo %%~dpnxf
 			)else (
+			if "%%f" NEQ "" (
 				set errorlevel=0
 				call "tests/%%f" >%outputfile%
 				if "!errorlevel!" == "0" (
@@ -58,6 +59,7 @@ setlocal enabledelayedexpansion
 				echo ^</td^> >>"%~2/%~3"
 				echo ^<td^>%~dpf1^</td^> >>"%~2/%~3"
 				echo ^</tr^> >>"%~2/%~3"
+			)
 			)
 		)
 		del %tempfile%
