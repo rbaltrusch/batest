@@ -1,4 +1,11 @@
-@echo off
+::verbose mode
+@if "%~1" == "-v" (
+	@shift
+	@echo on
+) else (
+	@echo off
+)
+
 ::setlocal required to keep changes to current directory in the local scope
 setlocal
 
@@ -115,6 +122,7 @@ if "%~1" == "help" (
 	echo.
 	echo help                     outputs help on all batest options
 	echo path                     outputs the directory in which the batest file resides
+	echo -v                       switches on verbose mode ^(needs to be first argument^)
 	echo --list [-l] ^<test_path^>  list all test files recognized under test_path
 	echo.
 	echo.
