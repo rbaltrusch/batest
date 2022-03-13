@@ -157,13 +157,23 @@ if exist "%~1" (
 cd %test_path%
 set "test_path=%cd%"
 
+
 ::test report header
+::-------------------------------
 if "%verbose%" == "true" ( echo Writing test results to "%test_path%/%testreport%" )
 echo ^<!DOCTYPE html^> >"%test_path%/%testreport%"
-echo ^<head^> ^<meta charset="utf-8"^> ^<link rel="stylesheet" href="%batestpath%/css/%css%"^> ^</head^> >>"%test_path%/%testreport%"
+echo ^<head^> ^<meta charset="utf-8"^> ^<style^> >>"%test_path%/%testreport%"
+
+::inline css
+pushd "%batestpath%/css"
+type %css% >>"%test_path%/%testreport%"
+popd
+echo ^</style^> ^</head^> >>"%test_path%/%testreport%"
+
 echo ^<h2^>Batest report for %test_path%^</h2^> >>"%test_path%/%testreport%"
 echo ^<p^>^<i^>%date% %time% %computername%:%username%^</i^>^</p^> >>"%test_path%/%testreport%temp"
 echo ^<table^> ^<tr^> ^<th^>Testfile^</th^> ^<th^>Status^</th^> ^<th^>Output^</th^> ^<th^>Path^</th^> ^</tr^> >>"%test_path%/%testreport%temp"
+::-------------------------------
 
 set /a npass=0
 set /a nfail=0
