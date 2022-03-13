@@ -39,7 +39,6 @@ if /i "%~1" == "NOT" (
 ) else (
 	set not=
 )
-
 set operator=%~2
 set message=%~4
 
@@ -50,6 +49,11 @@ if "%~3" == "" (
 )
 
 set first="%~1"
+if %first% == "" (
+    echo Wrong assert.bat usage. Please refer to the help section.
+    echo Exiting...
+    exit /b 1
+)
 
 if /i "%~1" == "EXIST" (
 	set first=%~1
