@@ -1,9 +1,10 @@
 ::verbose mode
+@echo off
 @if "%~1" == "-v" (
 	@shift
-	@echo on
+	set verbose=true
 ) else (
-	@echo off
+	set verbose=false
 )
 
 ::setlocal required to keep changes to current directory in the local scope
@@ -43,13 +44,16 @@ setlocal enabledelayedexpansion
 			)else (
 			if "%%f" NEQ "" (
 				set errorlevel=0
+				if "%verbose%" == "true" ( echo Running test file "tests/%%f" )
 				call "tests/%%f" >%outputfile%
 				if "!errorlevel!" == "0" (
 					set status=Passed
 					set /a numberpassed+=1
+					if "%verbose%" == "true" ( echo Test passed. )
 				)else (
 					set status=Failed
 					set /a numberfailed+=1
+					if "%verbose%" == "true" ( echo Test failed! )
 				)
 
 				::html table rows
@@ -85,7 +89,11 @@ set css=styles.css
 set batestpath=%~dp0
 set list=
 
-::add batest to path (not permannently)
+::add batest to path (not permanently)
+if "%verbose%" == "true" (
+	echo Batest path: %batestpath%
+	echo Temporarily adding batest to path...
+)
 set "path=%path%;%~dp0"
 
 ::night mode
@@ -141,6 +149,7 @@ if "%~1" == "path" (
 ::specified test path
 if exist "%~1" (
 	set "test_path=%~1"
+	if "%verbose%" == "true" ( echo Set test path to "%test_path%" )
 )else (
 	echo The specified test path "%~1" does not exist!
 	exit /b 1
@@ -149,6 +158,7 @@ cd %test_path%
 set "test_path=%cd%"
 
 ::test report header
+if "%verbose%" == "true" ( echo Writing test results to "%test_path%/%testreport%" )
 echo ^<!DOCTYPE html^> >"%test_path%/%testreport%"
 echo ^<head^> ^<meta charset="utf-8"^> ^<link rel="stylesheet" href="%batestpath%/css/%css%"^> ^</head^> >>"%test_path%/%testreport%"
 echo ^<h2^>Batest report for %test_path%^</h2^> >>"%test_path%/%testreport%"
@@ -159,17 +169,21 @@ set /a npass=0
 set /a nfail=0
 
 ::testing scripts
+if "%verbose%" == "true" ( echo Running tests for folder "%cd%" )
 call :run_tests "." "%test_path%" "%testreport%temp" "%list%"
 
 set /a npass+=%numberpassed%
 set /a nfail+=%numberfailed%
 
 setlocal enabledelayedexpansion
+if "%verbose%" == "true" ( echo Recursively running all tests in folder "%test_path%" )
 for /f "delims=," %%c in ('dir /b /s "%test_path%"') do (
 	::check if it is a folder
 	if exist %%~sc\nul (
 		::test scripts
+		if "%verbose%" == "true" ( echo Running tests for subfolder "%%c" )
 		call :run_tests "%%c" "%test_path%" "%testreport%temp" "%list%"
+		if "%verbose%" == "true" ( echo Passed !numberpassed!; Failed !numberfailed!. )
 		set /a npass+=!numberpassed!
 		set /a nfail+=!numberfailed!
 	)
