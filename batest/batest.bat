@@ -53,7 +53,7 @@ setlocal enabledelayedexpansion
 				)else (
 					set status=Failed
 					set /a numberfailed+=1
-					if "%verbose%" == "true" ( echo Test failed! )
+					if "%verbose%" == "true" ( echo Test failed^^! )
 				)
 
 				::html table rows
@@ -193,11 +193,12 @@ for /f "delims=," %%c in ('dir /b /s "%test_path%"') do (
 		::test scripts
 		if "%verbose%" == "true" ( echo Running tests for subfolder "%%c" )
 		call :run_tests "%%c" "%test_path%" "%testreport%temp" "%list%"
-		if "%verbose%" == "true" ( echo Passed !numberpassed!; Failed !numberfailed!. )
 		set /a npass+=!numberpassed!
 		set /a nfail+=!numberfailed!
 	)
 )
+
+if "%verbose%" == "true" ( echo Passed !npass!; Failed !nfail!. )
 
 ::Passed and Failed sum titles
 echo ^<div class=results^>^<p^>^<span class=passedtext^>Passed: %npass%^</span^> ^<span class=failedtext^>Failed: %nfail% ^</span^>^</p^>^</div^> >>"%test_path%/%testreport%"
