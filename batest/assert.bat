@@ -52,7 +52,8 @@ set first="%~1"
 if %first% == "" (
     echo Wrong assert.bat usage. Please refer to the help section.
     echo Exiting...
-    exit /b 1
+	set errorlevel=1
+    exit /b %errorlevel%
 )
 
 if /i "%~1" == "EXIST" (
