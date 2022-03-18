@@ -160,7 +160,6 @@ set "test_path=%cd%"
 
 ::test report header
 ::-------------------------------
-if "%verbose%" == "true" ( echo Writing test results to "%test_path%/%testreport%" )
 echo ^<!DOCTYPE html^> >"%test_path%/%testreport%"
 echo ^<head^> ^<meta charset="utf-8"^> ^<style^> >>"%test_path%/%testreport%"
 
@@ -179,6 +178,7 @@ set /a npass=0
 set /a nfail=0
 
 ::testing scripts
+if "%verbose%" == "true" ( echo Recursively running all tests in folder "%test_path%" )
 if "%verbose%" == "true" ( echo Running tests for folder "%cd%" )
 call :run_tests "." "%test_path%" "%testreport%temp" "%list%"
 
@@ -186,7 +186,6 @@ set /a npass+=%numberpassed%
 set /a nfail+=%numberfailed%
 
 setlocal enabledelayedexpansion
-if "%verbose%" == "true" ( echo Recursively running all tests in folder "%test_path%" )
 for /f "delims=," %%c in ('dir /b /s "%test_path%"') do (
 	::check if it is a folder
 	if exist %%~sc\nul (
@@ -198,6 +197,7 @@ for /f "delims=," %%c in ('dir /b /s "%test_path%"') do (
 	)
 )
 
+if "%verbose%" == "true" ( echo Writing test results to "%test_path%/%testreport%" )
 if "%verbose%" == "true" ( echo Passed !npass!; Failed !nfail!. )
 
 ::Passed and Failed sum titles
