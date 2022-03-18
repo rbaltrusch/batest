@@ -86,6 +86,7 @@ exit /b
 rem variables setup
 set testreport=test_report.html
 set css=styles.css
+set typeout=false
 set batestpath=%~dp0
 set list=
 
@@ -120,6 +121,18 @@ if "%~1" == "-l" (
 	shift
 )
 
+::type test report
+if "%~1" == "-t" (
+	set typeout=true
+	shift
+)
+
+::type test report
+if "%~1" == "--text" (
+	set typeout=true
+	shift
+)
+
 ::help input argument
 if "%~1" == "help" (
 	echo.
@@ -131,6 +144,7 @@ if "%~1" == "help" (
 	echo help                     outputs help on all batest options
 	echo path                     outputs the directory in which the batest file resides
 	echo -v                       switches on verbose mode ^(needs to be first argument^)
+	echo --text [-t]              types out the test report
 	echo --list [-l] ^<test_path^>  list all test files recognized under test_path
 	echo.
 	echo.
@@ -198,7 +212,6 @@ for /f "delims=," %%c in ('dir /b /s "%test_path%"') do (
 )
 
 if "%verbose%" == "true" ( echo Writing test results to "%test_path%/%testreport%" )
-if "%verbose%" == "true" ( echo Passed !npass!; Failed !nfail!. )
 
 ::Passed and Failed sum titles
 echo ^<div class=results^>^<p^>^<span class=passedtext^>Passed: %npass%^</span^> ^<span class=failedtext^>Failed: %nfail% ^</span^>^</p^>^</div^> >>"%test_path%/%testreport%"
@@ -213,6 +226,8 @@ if exist "%test_path%/%testreport%temp" (
 
 ::test report footer
 echo ^</table^> >>"%test_path%/%testreport%"
+if "%typeout%" == "true" type test_report.html
+if "%verbose%" == "true" ( echo Passed !npass!; Failed !nfail!. )
 
 endlocal
 set errorlevel=%nfail%
