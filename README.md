@@ -74,10 +74,14 @@ Some examples of various assert statements and whether they are expected to fail
 ```batch
 :: should pass, 1 equals 1
 call assert 1 EQU 1 "my message"
+```
 
+```batch
 ::should pass if file.txt exists
 call assert exist file.txt "file is missing"
+```
 
+```batch
 ::should pass 1 is not greater than 2
 call assert NOT 1 GEQ 2 "error message"
 ```
