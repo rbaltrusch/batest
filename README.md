@@ -92,6 +92,9 @@ More help is available in the [wiki](https://github.com/rbaltrusch/batest/wiki/a
 
 	assert help
 
+### CI/CD
+
+Batest can also be used to test code automatically using services such as Github Actions. A local example of this can be found in the batest [test workflow](https://github.com/rbaltrusch/batest/tree/master/.github/workflows/run_tests.yaml), and an example of a third-party repository testing with batest can be found [here](https://github.com/rbaltrusch/objectbatch/tree/master/.github/workflows/run_tests.yaml).
 
 ### More information
 
